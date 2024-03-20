@@ -1,0 +1,7 @@
+Package: enigma2-plugin-systemplugins-eitconfig
+Version: 0.1
+Description: tool to set up EIT config files
+Section: extra
+Priority: optional
+License: MIT
+Architecture: all
