@@ -1,4 +1,4 @@
-DESCRIPTION = "tool to check for missing picons"
+DESCRIPTION = "tool to set up EIT config files"
 MAINTAINER = "Huevos"
 
 inherit gitpkgv allarch ${PYTHON_PN}native

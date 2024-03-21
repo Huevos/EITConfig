@@ -37,7 +37,7 @@ branch="master"
 python="python"
 localgsed="sed"
 findoptions=""
-delete=0
+delete=1
 plugin="eitconfig"
 
 function this_help () {
@@ -151,7 +151,7 @@ printf "Po files update/creation from script starting.\n"
 languages=($(ls *.po | tr "\n" " " | sed 's/.po//g'))
 
 # If you want to define the language locally in this script uncomment and defined languages. You also need to uncomment this on the first run if the *.po files don't exist.
-languages=("ar" "bg" "ca" "cs" "da" "de" "el" "en" "en_GB" "es" "et" "fa" "fi" "fr" "fy" "he" "hr" "hu" "is" "it" "ku" "lt" "lv" "nl" "no" "nb" "pl" "pt" "pt_BR" "ro" "ru" "sv" "sk" "sl" "sr" "th" "tr" "uk" "zh_CN")
+#languages=("ar" "bg" "ca" "cs" "da" "de" "el" "en" "en_GB" "es" "et" "fa" "fi" "fr" "fy" "he" "hr" "hu" "is" "it" "ku" "lt" "lv" "nl" "no" "nb" "pl" "pt" "pt_BR" "ro" "ru" "sv" "sk" "sl" "sr" "th" "tr" "uk" "zh_CN")
 
 printf "Creating temporary file %s-py.pot\n" $plugin
 find $findoptions .. -name "*.py" -exec xgettext --no-wrap -L Python --from-code=UTF-8 -kpgettext:1c,2 --add-comments="TRANSLATORS:" -d enigma2 -s -o "$plugin"-py.pot {} \+
