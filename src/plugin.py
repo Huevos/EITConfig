@@ -14,6 +14,8 @@ from Plugins.Plugin import PluginDescriptor
 from Screens.MessageBox import MessageBox
 from Screens.Setup import Setup
 
+from . import _
+
 BLACKLIST = eEPGCache.BLACKLIST
 WHITELIST = eEPGCache.WHITELIST
 
