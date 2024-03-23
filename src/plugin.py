@@ -13,6 +13,7 @@ from Plugins.Plugin import PluginDescriptor
 
 from Screens.MessageBox import MessageBox
 from Screens.Setup import Setup
+from Screens.TextBox import TextBox
 
 from . import _
 
@@ -355,6 +356,10 @@ class Editor(Setup):
 		self.title = _("Edit Now/Next EIT Blacklist") if self.isBlacklist else _("Edit Now/Next EIT Whitelist")
 		self["key_yellow"] = StaticText()
 		self["key_blue"] = StaticText()
+		self["key_info"] = StaticText(_("INFO"))
+		self["infoActions"] = HelpableActionMap(self, ["SetupActions"], {
+			"info": (self.showHelp, _("Read help info"))
+		}, prio=0, description=_("Eit Setup Actions"))
 		self["addActions"] = HelpableActionMap(self, ["ColorActions"], {
 			"yellow": (self.keyAddService, _("Add a service"))
 		}, prio=0, description=_("EIT Setup Actions"))
@@ -526,6 +531,21 @@ class Editor(Setup):
 			self.keyPageUp()
 		else:
 			Setup.keyLeft(self)
+
+	def showHelp(self):
+		self.session.open(TextBox, self.helpText(), _("Help Screen"))
+
+	def helpText(self):
+		return "\n\n".join([
+			_("First a quick explanation of EPG data. EPG data can come from 4 sources:"),
+			_("- Now/Next, downloaded from the current transport stream, displayed on the infobar, not written to EPG cache, and discarded on channel change."),
+			_("- EIT, downloaded from the current transport stream, displayed in the various simple and graphical EPG screens, contains title, description, genre, and age recomendation. Typically contains entries for up to seven days in advance, is saved to epgcache and for that reason it persists on channel change."),
+			_("- OpenTV (or similar), downloaded every now and again from different a transport stream, the data is similar to EIT, it is  saved to EPG cache and persists on channel change."),
+			_("- Online import, downloaded from the internet, typically once a day, the data is similar to EIT, it is  saved to EPG cache and persists on channel change."),
+			_("As the EPG data is available from multiple sources it is possible to have conflicting data. This conflicting data leads to 'overlaps' or corruption in the epg screens, e.g. one source says the program spans 13:00-14:00 and another source says 13:05-14:05, and with different titles or descriptions."),
+			_("To avoid this corruption we can add individual channels (or complete providers) to a 'whitelist' or 'blacklist'."),
+			_("Purpose of 'whitelist'. Sometimes real time data from Now/Next is preferable to the online imported data which may be stale. Adding a channel to the 'whitelist' allows Now/Next data for that channel to be saved in the epgcache, rather than just being discarded on channel change, and the Now/Next data will overwrite the online imported data."),
+			_("Purpose of 'blacklist'. In contrast to the above, sometimes the data provided on the transport stream, either EIT or Now/Next is not reliable and we prefer just the data from the online import. In these cases the channel in question can be added to the 'blacklist' and then no data from the current transport stream will enter the EPG cache and the online imported data will persist."),])
 
 
 
