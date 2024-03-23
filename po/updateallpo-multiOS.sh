@@ -30,7 +30,7 @@
 # PoEdit:  https://poedit.net/
 #
 # -------------------------------------------------------------------------------------
-# Run this script from within the locale folder.
+# Run this script from within the po folder.
 #
 remote="origin"
 branch="master"
@@ -38,7 +38,8 @@ python="python"
 localgsed="sed"
 findoptions=""
 delete=1
-plugin="eitconfig"
+plugin="eitconfig" # this is plugin language domain (in __init__.py)
+createmo="0"
 
 function this_help () {
 	printf "Possible options are:\n"
@@ -162,18 +163,27 @@ OLDIFS=$IFS
 IFS=" "
 
 for lang in "${languages[@]}" ; do
-	mopath="../usr/lib/enigma2/python/Plugins/SystemPlugins/RemoteControlSelection/locale/$lang/LC_MESSAGES"
+	#mopath="../usr/lib/enigma2/python/Plugins/SystemPlugins/EITConfig/locale/$lang/LC_MESSAGES"
+	mopath="../src/locale/$lang/LC_MESSAGES"
 	mofile="$mopath/$plugin.mo"
-	mkdir -p $mopath
-	if [ -f $lang.po ]; then \
+	if [ $createmo -eq 1 ] ; then
+		mkdir -p $mopath
+	fi
+	if [ -f $lang.po ]; then
 		printf "Updating existing translation file %s.po\n" $lang
-		msgmerge --backup=none --no-wrap -s -U $lang.po "$plugin".pot && touch $lang.po; \
-		msgattrib --no-wrap --no-obsolete $lang.po -o $lang.po; \
-		msgfmt -o $mofile $lang.po; \
-	else \
+		msgmerge --backup=none --no-wrap -s -U $lang.po "$plugin".pot && touch $lang.po;
+		msgattrib --no-wrap --no-obsolete $lang.po -o $lang.po;
+		if [ $createmo -eq 1 ] ; then
+			printf "Updating existing mo file %s\n" $mofile
+			msgfmt -o $mofile $lang.po;
+		fi
+	else
 		printf "New file created: %s.po, please add it to github before commit\n" $lang
-		msginit -l $lang.po -o $lang.po -i "$plugin".pot --no-translator; \
-		msgfmt -o $mofile $lang.po; \
+		msginit -l $lang.po -o $lang.po -i "$plugin".pot --no-translator;
+		if [ $createmo -eq 1 ] ; then
+			printf "Creating new mo file %s\n" $mofile
+			msgfmt -o $mofile $lang.po;
+		fi
 	fi
 done
 if [ $delete -eq 1 ]; then \
@@ -194,3 +204,5 @@ printf "Please read the translators wiki page:\n"
 printf "\nhttps://wiki.openpli.org/Information_for_Translators\n"
 rm -rf *.mo
 chmod 644 *.po
+
+read -p "Press any key to exit" -n 1 -r
