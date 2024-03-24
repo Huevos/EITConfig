@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-23 13:26+0100\n"
-"PO-Revision-Date: 2024-03-21 12:06+0200\n"
+"PO-Revision-Date: 2024-03-23 17:05+0200\n"
 "Last-Translator: Orlandox\n"
 "Language-Team: none\n"
 "Language: fi\n"
@@ -20,19 +20,19 @@ msgstr ""
 
 #: ../src/plugin.py:542
 msgid "- EIT, downloaded from the current transport stream, displayed in the various simple and graphical EPG screens, contains title, description, genre, and age recomendation. Typically contains entries for up to seven days in advance, is saved to epgcache and for that reason it persists on channel change."
-msgstr ""
+msgstr "- Nykyisestä siirtovirrasta ladattu EIT, joka näkyy erilaisissa yksinkertaisissa ja graafisissa EPG-näytöissä, sisältää otsikon, kuvauksen, tyylilajin ja ikäsuosituksen. Sisältää tyypillisesti merkinnät jopa seitsemän päivää etukäteen, tallennetaan EPG-välimuistiin ja siksi se säilyy kanavan vaihdon yhteydessä."
 
 #: ../src/plugin.py:541
 msgid "- Now/Next, downloaded from the current transport stream, displayed on the infobar, not written to EPG cache, and discarded on channel change."
-msgstr ""
+msgstr "- Nyt/Seuraava, ladattu nykyisestä siirtovirrasta, näytetään tietopalkissa, ei kirjoitettu EPG-välimuistiin ja hylätään kanavan vaihdon yhteydessä."
 
 #: ../src/plugin.py:544
 msgid "- Online import, downloaded from the internet, typically once a day, the data is similar to EIT, it is  saved to EPG cache and persists on channel change."
-msgstr ""
+msgstr "- Online-tuonti, ladattu Internetistä, tyypillisesti kerran päivässä, tiedot ovat EIT:n kaltaisia, ne tallennetaan EPG-välimuistiin ja säilyvät kanavan vaihdon yhteydessä."
 
 #: ../src/plugin.py:543
 msgid "- OpenTV (or similar), downloaded every now and again from different a transport stream, the data is similar to EIT, it is  saved to EPG cache and persists on channel change."
-msgstr ""
+msgstr "- OpenTV (tai vastaava), ladattu silloin tällöin eri siirtovirrasta, tiedot ovat EIT:n kaltaisia, ne tallennetaan EPG-välimuistiin ja säilyvät kanavan vaihdon yhteydessä."
 
 #: ../src/plugin.py:364
 msgid "Add a service"
@@ -49,7 +49,7 @@ msgstr "Lisättiin kanava %s"
 
 #: ../src/plugin.py:545
 msgid "As the EPG data is available from multiple sources it is possible to have conflicting data. This conflicting data leads to 'overlaps' or corruption in the epg screens, e.g. one source says the program spans 13:00-14:00 and another source says 13:05-14:05, and with different titles or descriptions."
-msgstr ""
+msgstr "Koska EPG-tiedot ovat saatavilla useista lähteistä, on mahdollista saada ristiriitaisia tietoja. Nämä ristiriitaiset tiedot johtavat 'päällekkäisyyksiin' tai korruptoitumiseen EPG-näytöissä, esim. yksi lähde kertoo, että ohjelma on kello 13.00-14.00 ja toinen lähde kertoo 13:05-14:05 ja eri otsikoilla tai kuvauksilla."
 
 #: ../src/plugin.py:365
 msgid "EIT Setup Actions"
@@ -69,15 +69,15 @@ msgstr "EIT:n asetukset"
 
 #: ../src/plugin.py:540
 msgid "First a quick explanation of EPG data. EPG data can come from 4 sources:"
-msgstr ""
+msgstr "Ensin lyhyt selitys EPG-tiedoista. EPG-tiedot voivat tulla 4 lähteestä:"
 
 #: ../src/plugin.py:536
 msgid "Help Screen"
-msgstr ""
+msgstr "Ohje-näyttö"
 
 #: ../src/plugin.py:359
 msgid "INFO"
-msgstr ""
+msgstr "INFO"
 
 #: ../src/plugin.py:451
 msgid "It is only possible to add services that exist in lamedb."
@@ -101,15 +101,15 @@ msgstr "Nyt/Seuraava valkolista"
 
 #: ../src/plugin.py:548
 msgid "Purpose of 'blacklist'. In contrast to the above, sometimes the data provided on the transport stream, either EIT or Now/Next is not reliable and we prefer just the data from the online import. In these cases the channel in question can be added to the 'blacklist' and then no data from the current transport stream will enter the EPG cache and the online imported data will persist."
-msgstr ""
+msgstr "'Mustan listan' tarkoitus. Toisin kuin edellä, toisinaan kuljetusvirrassa joko EIT tai Nyt/Seuraava-tiedot eivät ole luotettavia ja suosimme vain verkosta tuotuja tietoja. Näissä tapauksissa kyseinen kanava voidaan lisätä 'mustalle listalle', jolloin nykyisen siirtovirran tiedot eivät pääse EPG-välimuistiin ja verkosta tuodut tiedot säilyvät."
 
 #: ../src/plugin.py:547
 msgid "Purpose of 'whitelist'. Sometimes real time data from Now/Next is preferable to the online imported data which may be stale. Adding a channel to the 'whitelist' allows Now/Next data for that channel to be saved in the epgcache, rather than just being discarded on channel change, and the Now/Next data will overwrite the online imported data."
-msgstr ""
+msgstr "'Valkoisen listan' tarkoitus. Joskus reaaliaikaiset Nyt/Seuraava-tiedot ovat parempia kuin verkosta tuodut tiedot, jotka voivat olla vanhentuneita. Kanavan lisääminen 'valkoiselle listalle' sallii tämän kanavan Nyt/Seuraava-tietojen tallentamisen EPG-välimuistiin, sen sijaan, että ne hylättäisiin kanavan vaihdon yhteydessä ja Nyt/Seuraava-tiedot korvaavat verkosta tuodut tiedot."
 
 #: ../src/plugin.py:361
 msgid "Read help info"
-msgstr ""
+msgstr "Lue ohjetiedot"
 
 #: ../src/plugin.py:402
 msgid "Remove"
@@ -130,7 +130,7 @@ msgstr "Valitse"
 
 #: ../src/plugin.py:546
 msgid "To avoid this corruption we can add individual channels (or complete providers) to a 'whitelist' or 'blacklist'."
-msgstr ""
+msgstr "Tämän korruptoitumisen välttämiseksi voimme lisätä yksittäisiä kanavia (tai kokonaisia palveluntarjoajia) 'valkoiselle listalle' tai 'mustalle listalle'."
 
 #: ../src/plugin.py:461
 #, python-format
